@@ -1,0 +1,19 @@
+
+body {
+    /* font-family: 'Open Sans Condensed'; */
+    padding: 20px 60px;
+    font-family: "Open Sans",Arial,Helvetica,Sans-Serif;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #fff;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+* {
+    box-sizing: border-box;
+}

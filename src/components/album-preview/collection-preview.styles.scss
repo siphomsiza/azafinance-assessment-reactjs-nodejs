@@ -1,0 +1,20 @@
+.collection-pr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+    background-color: #3D3C3A;
+    min-height: 300px;
+    .title {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    .preview {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 75% !important;
+      margin: 0 auto;
+      padding: 30px;
+    }
+  }
