@@ -1,7 +1,7 @@
 import React, {useReducer, useEffect } from 'react';
 
 import { initialState, reducer } from '../../redux/reducer/artists';
-
+import { useHistory } from 'react-router-dom';
 
 import SearchBar from '../../components/search-bar/search-bar-component';
 import CollectionPreview from '../../components/collection-preview/collection-preview';
@@ -11,7 +11,7 @@ import './artists.styles.scss'
 
 const Home = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
-
+    let history = useHistory();
 
     useEffect(() => {
         fetch(`/search/artist?q=`)
@@ -28,7 +28,7 @@ const Home = () => {
         dispatch({
             type: "SEARCH_ARTISTS_REQUEST"
         });
-        //console.log("un", searchArtist)
+
         fetch(`/search/artist?q=${searchArtist}`)
             .then(response => response.json())
             .then(data => {
@@ -43,14 +43,18 @@ const Home = () => {
                         error: data.Error
                     });
                 }
+                if (history.location.pathname === "/artist"){
+                  state.artists = data.data
+                  history.push({
+                       pathname: '/'
+                     });
+                }
             });
     };
 
 
 
     const { artists, errorMessage, loading } = state;
-    //console.log(artists)
-
     return (
 
 
@@ -63,7 +67,6 @@ const Home = () => {
                       <SearchBar search={search}/>
 
                     {
-                        //console.log("updated state", artists)
                         <CollectionPreview data={artists} />
                     }
                 </>

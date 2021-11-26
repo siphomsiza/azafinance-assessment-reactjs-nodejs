@@ -1,9 +1,7 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, {useReducer, useEffect } from 'react';
 
 import { initialState, albumReducer } from '../../redux/reducer/albums';
 import AlbumPreview from '../../components/album-preview/collection-preview';
-import SearchBar from '../../components/search-bar/search-bar-component';
-import Directory from '../../components/directory/directory.component';
 import Artists from '../artists/artists.component';
 
 import './artist.styles.scss'
@@ -19,7 +17,7 @@ const Artist = (props) => {
         fetch(`/search/album?q=${artist.name}`)
             .then(response => response.json())
             .then(data => {
-                //console.log("albums", data.data)
+                //console.log(data.data)
                 if (data.data) {
                     dispatch({
                         type: "SEARCH_ALBUMS_SUCCESS",
@@ -62,14 +60,12 @@ const Artist = (props) => {
 
     const { albums, errorMessage, loading, playlist } = state;
     const artistAlbums = albums.map((item, index) => {
-        //console.log(item)
         const formattedAlbum = {
             artist: item.artist,
             name: item.title,
             picture: item.cover,
             picture_big: item.cover_big,
             type: item.type,
-            nb_album: item.nb_album,
             nb_fan: item.nb_fan,
             nb_album: item.nb_album
         }

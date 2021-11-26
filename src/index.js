@@ -15,6 +15,4 @@ ReactDOM.render(
         </BrowserRouter>
     </Provider>
     ,
-    document.getElementById('root'));
-
-
+    document.getElementById('container-root'));

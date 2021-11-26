@@ -16,7 +16,7 @@ const CollectionItem = (props) => {
 
     //console.log("props", props)
 
-    const { name, type, picture_big, nb_fan ,release_date,album} = props;
+    const { name, type, picture_big, nb_fan ,release_date} = props;
     //console.log(props)
     return (
         <div className="collection-item">
