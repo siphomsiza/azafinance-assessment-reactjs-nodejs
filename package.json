@@ -5,14 +5,14 @@
   "proxy": "https://api.deezer.com",
   "dependencies": {
     "axios": "^0.22.0",
-    "firebase": "^7.3.0",
+    "firebase": "^9.5.0",
     "moment": "^2.29.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^6.0.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^4.0.3",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "reselect": "^4.0.0"
@@ -38,7 +38,12 @@
       "last 1 safari version"
     ]
   },
+  "engines": {
+    "node": "14.4.0"
+  },
   "devDependencies": {
-    "font-awesome": "^4.7.0"
+    "@testing-library/react": "^12.1.2",
+    "font-awesome": "^4.7.0",
+    "react-test-renderer": "^17.0.2"
   }
 }

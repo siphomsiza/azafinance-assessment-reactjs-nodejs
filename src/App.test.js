@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import App from './App';
+import { Provider } from 'react-redux';
+import Header from './components/header/header.component';
+import store from './redux/store';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test('render h1 element', () => {
+  render(<App />);
+  expect(screen.getByText('Hello World')).toBeInTheDocument();
 });
