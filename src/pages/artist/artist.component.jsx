@@ -41,7 +41,7 @@ const Artist = (props) => {
             type: "SEARCH_PLAYLIST_REQUEST"
         });
         //fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/artist/462812/top?limit=50`)
-        fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com${artist.tracklist.substring(22, artist.tracklist.length)}`)
+        fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/${artist.tracklist.substring(22, artist.tracklist.length)}`)
         //fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
             .then(response => response.json())
             .then(data => {
