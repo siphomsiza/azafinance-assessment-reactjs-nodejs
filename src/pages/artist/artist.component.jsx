@@ -14,11 +14,11 @@ const Artist = (props) => {
         dispatch({
             type: "SEARCH_ALBUMS_REQUEST"
         });
-          fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/search/album?q=${artist.name}`)
+
+          fetch(`https://private-cors-server.herokuapp.com/http://api.deezer.com/search/album?q=${artist.name}`)
         //fetch(`/search/album?q=${artist.name}`)
             .then(response => response.json())
             .then(data => {
-                //console.log(data.data)
                 if (data.data) {
                     dispatch({
                         type: "SEARCH_ALBUMS_SUCCESS",
@@ -32,7 +32,7 @@ const Artist = (props) => {
                 }
             });
 
-        getPlaylist();
+            getPlaylist();
 
     }, []);
 
@@ -40,9 +40,10 @@ const Artist = (props) => {
         dispatch({
             type: "SEARCH_PLAYLIST_REQUEST"
         });
-          // fetch(`${artist.tracklist}`)
-        //fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/${artist.tracklist.substring(22, artist.tracklist.length)}`)
-        fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
+
+        fetch(`https://private-cors-server.herokuapp.com/${artist.tracklist}`)
+        //fetch(`https://private-cors-server.herokuapp.com/http://api.deezer.com/${artist.tracklist.substring(22, artist.tracklist.length)}`)
+        //fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
