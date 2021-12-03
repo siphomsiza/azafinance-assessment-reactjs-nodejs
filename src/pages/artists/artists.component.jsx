@@ -14,7 +14,8 @@ const Home = () => {
     let history = useHistory();
 
     useEffect(() => {
-        fetch(`/search/artist?q=`)
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/search/artist?q=`)
+        //fetch(`/search/artist?q=`)
             .then(response => response.json())
             .then(data => {
                 dispatch({
@@ -28,8 +29,8 @@ const Home = () => {
         dispatch({
             type: "SEARCH_ARTISTS_REQUEST"
         });
-
-        fetch(`/search/artist?q=${searchArtist}`)
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/search/artist?q=${searchArtist}`)
+        //fetch(`/search/artist?q=${searchArtist}`)
             .then(response => response.json())
             .then(data => {
                 if (data.data) {

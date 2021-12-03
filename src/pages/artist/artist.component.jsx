@@ -14,7 +14,8 @@ const Artist = (props) => {
         dispatch({
             type: "SEARCH_ALBUMS_REQUEST"
         });
-        fetch(`/search/album?q=${artist.name}`)
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/search/album?q=${artist.name}`)
+        //fetch(`/search/album?q=${artist.name}`)
             .then(response => response.json())
             .then(data => {
                 //console.log(data.data)
