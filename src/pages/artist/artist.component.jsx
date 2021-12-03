@@ -40,7 +40,9 @@ const Artist = (props) => {
         dispatch({
             type: "SEARCH_PLAYLIST_REQUEST"
         });
-        fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
+        //fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/artist/462812/top?limit=50`)
+        fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com${artist.tracklist.substring(22, artist.tracklist.length)}`)
+        //fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
             .then(response => response.json())
             .then(data => {
 
@@ -60,6 +62,7 @@ const Artist = (props) => {
 
 
     const { albums, errorMessage, loading, playlist } = state;
+
     const artistAlbums = albums.map((item, index) => {
         const formattedAlbum = {
             artist: item.artist,
