@@ -40,9 +40,9 @@ const Artist = (props) => {
         dispatch({
             type: "SEARCH_PLAYLIST_REQUEST"
         });
-           fetch(`${artist.tracklist}`)
+          // fetch(`${artist.tracklist}`)
         //fetch(`https://cors-anywhere.herokuapp.com/http://api.deezer.com/${artist.tracklist.substring(22, artist.tracklist.length)}`)
-        //fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
+        fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
