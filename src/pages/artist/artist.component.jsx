@@ -15,8 +15,8 @@ const Artist = (props) => {
             type: "SEARCH_ALBUMS_REQUEST"
         });
 
-          fetch(`https://corsanywhere.herokuapp.com/https://api.deezer.com/search/album?q=${artist.name}`)
-        //fetch(`/search/album?q=${artist.name}`)
+        //fetch(`https://corsanywhere.herokuapp.com/https://api.deezer.com/search/album?q=${artist.name}`)
+        fetch(`/search/album?q=${artist.name}`)
             .then(response => response.json())
             .then(data => {
                 if (data.data) {
@@ -33,7 +33,6 @@ const Artist = (props) => {
             });
 
             getPlaylist();
-             //window.location.reload();
 
     }, []);
 
@@ -42,8 +41,8 @@ const Artist = (props) => {
             type: "SEARCH_PLAYLIST_REQUEST"
         });
 
-        fetch(`https://corsanywhere.herokuapp.com/https://api.deezer.com/search/track/autocomplete?q=${artist.name}`)
-        //fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
+        //fetch(`https://corsanywhere.herokuapp.com/https://api.deezer.com/search/track/autocomplete?q=${artist.name}`)
+        fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
             .then(response => response.json())
             .then(data => {
                 //console.log(data)
@@ -63,8 +62,6 @@ const Artist = (props) => {
 
 
     const { albums, errorMessage, loading, playlist } = state;
-       //window.location.reload();
-       console.log(playlist)
     const artistAlbums = albums.map((item, index) => {
         const formattedAlbum = {
             artist: item.artist,
