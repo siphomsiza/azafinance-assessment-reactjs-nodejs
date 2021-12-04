@@ -14,7 +14,7 @@ const Home = () => {
     let history = useHistory();
 
     useEffect(() => {
-        fetch(`https://private-cors-server.herokuapp.com/https://api.deezer.com/search/artist?q=`)
+        fetch(`https://corsanywhere.herokuapp.com/https://api.deezer.com/search/artist?q=`)
         //fetch(`/search/artist?q=`)
             .then(response => response.json())
             .then(data => {
@@ -29,7 +29,7 @@ const Home = () => {
         dispatch({
             type: "SEARCH_ARTISTS_REQUEST"
         });
-        fetch(`https://private-cors-server.herokuapp.com/https://api.deezer.com/search/artist?q=${searchArtist}`)
+        fetch(`https://corsanywhere.herokuapp.com/https://api.deezer.com/search/artist?q=${searchArtist}`)
         //fetch(`/search/artist?q=${searchArtist}`)
             .then(response => response.json())
             .then(data => {
@@ -59,7 +59,7 @@ const Home = () => {
     return (
 
 
-        loading === true && errorMessage ? <div><text>Loading...</text></div>
+            loading === true ? <div className="loading">Loading...</div>
             :
 
             <div className="shop-page">

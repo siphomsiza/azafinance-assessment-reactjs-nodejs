@@ -15,7 +15,7 @@ const Artist = (props) => {
             type: "SEARCH_ALBUMS_REQUEST"
         });
 
-          fetch(`https://private-cors-server.herokuapp.com/https://api.deezer.com/search/album?q=${artist.name}`)
+          fetch(`https://corsanywhere.herokuapp.com/https://api.deezer.com/search/album?q=${artist.name}`)
         //fetch(`/search/album?q=${artist.name}`)
             .then(response => response.json())
             .then(data => {
@@ -33,6 +33,7 @@ const Artist = (props) => {
             });
 
             getPlaylist();
+             //window.location.reload();
 
     }, []);
 
@@ -41,12 +42,11 @@ const Artist = (props) => {
             type: "SEARCH_PLAYLIST_REQUEST"
         });
 
-        //fetch(`https://private-cors-server.herokuapp.com/${artist.tracklist}`)
-        fetch(`https://private-cors-server.herokuapp.com/https://api.deezer.com/${artist.tracklist.substring(22, artist.tracklist.length)}`)
+        fetch(`https://corsanywhere.herokuapp.com/https://api.deezer.com/search/track/autocomplete?q=${artist.name}`)
         //fetch(`${artist.tracklist.substring(22, artist.tracklist.length)}`)
             .then(response => response.json())
             .then(data => {
-                console.log(`https://private-cors-server.herokuapp.com/https://api.deezer.com/${artist.tracklist.substring(22, artist.tracklist.length)}`)
+                //console.log(data)
                 if (data.data) {
                     dispatch({
                         type: "SEARCH_PLAYLIST_SUCCESS",
@@ -63,7 +63,8 @@ const Artist = (props) => {
 
 
     const { albums, errorMessage, loading, playlist } = state;
-
+       //window.location.reload();
+       console.log(playlist)
     const artistAlbums = albums.map((item, index) => {
         const formattedAlbum = {
             artist: item.artist,
@@ -78,12 +79,14 @@ const Artist = (props) => {
     })
 
     return (
-            loading === true && errorMessage ? <div><text>Loading...</text></div> :
-
             <div>
+
                 <div className='artists_homepage'><Artists/></div>
                 <div className="collection-pr">
                     <div className="preview">
+                        <div className="loading-container">
+                          {loading === true ? <div className="loading">Loading...</div> : ''}
+                        </div>
                         <div className="artist-item">
                             <div
                                 className="image"

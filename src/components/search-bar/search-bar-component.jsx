@@ -18,16 +18,9 @@ const SearchBar = (props) => {
         props.search(searchValue);
         resetInputField();
     }
-    const submitForm = (e) => {
-       // history.push({
-       //      pathname: '/',
-       //      search: '?query=abc',
-       //      state: { detail: 'abc' }
-       //  });
-    }
 
     return (
-          <form onSubmit={submitForm}>
+          <form >
               <input
                   className='search'
                   value={searchValue}
