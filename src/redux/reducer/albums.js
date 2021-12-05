@@ -47,3 +47,4 @@ export const albumReducer = (state, action) => {
             return state;
     }
 };
+export default albumReducer

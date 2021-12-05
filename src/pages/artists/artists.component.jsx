@@ -53,12 +53,8 @@ const Home = () => {
             });
     };
 
-
-
-    const { artists, errorMessage, loading } = state;
+    const { artists, loading } = state;
     return (
-
-
             loading === true ? <div className="loading">Loading...</div>
             :
 

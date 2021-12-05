@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import store from './redux/store';
-
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
@@ -14,4 +13,5 @@ ReactDOM.render(
         </BrowserRouter>
     </Provider>
     ,
-    document.getElementById('container-root'));
+    document.getElementById('container-root')|| document.createElement('div') // for testing purposes
+);

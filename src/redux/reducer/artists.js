@@ -6,6 +6,12 @@ export const initialState = {
 
 export const reducer = (state, action) => {
     switch (action.type) {
+        case "SEARCH_MOVIES_SUCCESS":
+            return {
+                ...state,
+                loading: false,
+                artists: []
+            };
         case "SEARCH_ARTISTS_REQUEST":
             return {
                 ...state,
@@ -28,4 +34,4 @@ export const reducer = (state, action) => {
             return state;
     }
 };
-
+export default reducer
