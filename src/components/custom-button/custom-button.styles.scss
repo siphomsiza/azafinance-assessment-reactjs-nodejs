@@ -1,3 +1,4 @@
+
 .custom-button {
     min-width: 165px;
     width: auto;
@@ -16,7 +17,6 @@
     display: flex;
     justify-content: center;
     border-radius: 10px;
-
     &:hover {
         background-color: white;
         color: black;
@@ -41,3 +41,18 @@
         }
     }
 }
+.new-transaction {
+     margin-right: 62%;
+     padding: 0 15px 0 15px;
+ }
+
+ element.style {
+ }
+ [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+     cursor: pointer;
+ }
+ .new-transaction-l {
+     margin-left: 3%;
+     padding: 0 15px 0 15px;
+     margin-bottom: 2%;
+ }

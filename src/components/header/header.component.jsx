@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import './header.styles.scss';
 
 const Header = () => (
-    <div className="head"></div>
+    <div className="header"><h1>Header</h1></div>
 )
 
 const mapStateToProps = createStructuredSelector({

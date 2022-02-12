@@ -1,5 +1,5 @@
 import { createStore,applyMiddleware} from 'redux';
-import artistsReducer from '../redux/reducer/artists';
+import artistsReducer from '../redux/reducer/transactions';
 import logger from 'redux-logger';
 
 const middleware = [logger];

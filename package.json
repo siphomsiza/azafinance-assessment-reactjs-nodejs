@@ -5,13 +5,16 @@
   "private": true,
   "dependencies": {
     "axios": "^0.22.0",
+    "bootstrap": "^5.1.3",
+    "currency-formatter": "^1.5.9",
+    "date-utils": "^1.2.21",
     "firebase": "^9.5.0",
     "moment": "^2.29.1",
     "node-sass": "^6.0.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "5.2.0",
     "react-scripts": "^4.0.3",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
@@ -47,8 +50,8 @@
     "@babel/preset-react": "^7.16.0",
     "@testing-library/react": "^12.1.2",
     "babel-jest": "^26.6.0",
-    "font-awesome": "^4.7.0",
     "enzyme": "^2.9.1",
+    "font-awesome": "^4.7.0",
     "jest": "26.6.0",
     "jest-cli": "^21.2.1",
     "react-test-renderer": "^17.0.2"
@@ -56,5 +59,5 @@
   "moduleDirectories": [
     "node_modules",
     "src"
-   ]
+  ]
 }

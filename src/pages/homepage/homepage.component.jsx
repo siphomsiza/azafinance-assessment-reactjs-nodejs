@@ -1,10 +1,11 @@
 import React from 'react';
-import Artists from '../artists/artists.component';
+//import Artists from '../artists/artists.component';
+import Transactions from '../transactions/transactions.component';
 import './homepage.styles.scss';
 
 const HomePage = () => (
     <div className='homepage'>
-        <Artists />
+        <Transactions />
     </div>
 )
 

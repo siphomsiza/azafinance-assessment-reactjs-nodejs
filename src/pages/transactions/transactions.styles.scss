@@ -2,11 +2,16 @@
     width: 100% !important;
 }
 .collection-preview{
-    width: 75% !important;
+    width: 100% !important;
     margin: 0 auto;
     padding: 30px;
+    background-color: #4c6e4c;
 }
 .loading{
   color: red;
+  font-size: 14px;
+}
+
+.table th td{
   font-size: 14px;
 }

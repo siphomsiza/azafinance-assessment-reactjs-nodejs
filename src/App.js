@@ -5,7 +5,8 @@ import './App.css';
 import { createStructuredSelector } from 'reselect';
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
-import Artist from './pages/artist/artist.component';
+import Transaction from './pages/transaction/transaction.component';
+import PostTransaction from './pages/transaction/post_transaction.component';
 
 class App extends React.Component {
   render() {
@@ -14,7 +15,8 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage}></Route>
-          <Route path='/artist' component={Artist}></Route>
+          <Route path='/transaction' component={Transaction}></Route>
+          <Route path='/transactions/new' component={PostTransaction}></Route>
         </Switch>
       </div>
     );

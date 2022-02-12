@@ -1,25 +1,24 @@
 export const initialState = {
     loading: false,
-    albums: [],
-    playlist: [],
+    transaction: [],
     errorMessage: null
 };
 
-export const albumReducer = (state, action) => {
+export const transactionReducer = (state, action) => {
     switch (action.type) {
-        case "SEARCH_ALBUMS_REQUEST":
+        case "SEARCH_TRANSACTION_REQUEST":
             return {
                 ...state,
                 loading: true,
                 errorMessage: null
             };
-        case "SEARCH_ALBUMS_SUCCESS":
+        case "SEARCH_TRANSACTION_SUCCESS":
             return {
                 ...state,
                 loading: false,
-                albums: action.payload
+                transaction: action.payload
             };
-        case "SEARCH_ALBUMS_FAILURE":
+        case "SEARCH_TRANSACTION_FAILURE":
             return {
                 ...state,
                 loading: false,
@@ -47,4 +46,4 @@ export const albumReducer = (state, action) => {
             return state;
     }
 };
-export default albumReducer
+export default transactionReducer

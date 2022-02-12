@@ -1,44 +1,40 @@
 import React from 'react';
-
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router-dom';
-
 import CustomButton from '../custom-button/custom-button.component';
-
-
 import './collection-item.styles.scss';
+import { useHistory } from 'react-router-dom';
+require('date-utils');
 
 const CollectionItem = (props) => {
+  const { id,subject,customer_id,amount, created_at,currency_code,currency_symbol} = props;
+  const currencyFormatter = require('currency-formatter');
+  const amount_currency = currencyFormatter.format(amount, { code: currency_code })
+  let date_ob = new Date(created_at);
+  date_ob.setHours(date_ob.getHours() - 2);
+  const created = new Date(date_ob).toLocaleString();
+
     let history = useHistory();
     const redirect = () => {
-        history.push('/artist', props)
+        history.push("/transaction/"+id, id)
     }
 
-    //console.log("props", props)
-
-    const { name, type, picture_big, nb_fan ,release_date} = props;
-    //console.log(props)
     return (
-        <div className="collection-item">
-            <div
-                className="image"
-                style={{ backgroundImage: `url(${picture_big})` }}
-            />
-            <div className="collection-footer row">
-                <span className="name">{name}</span>
-                <span className="fans">Fans: {nb_fan}</span>
-                {
-                    type === 'album' ? <span className="fans">Released: {release_date}</span> : ''
-                }
+              <tr>
+                <td >{id}</td>
+                <td align="center">{customer_id}</td>
+                <td align="center">{subject}</td>
+                <td align="center">{amount_currency}</td>
+                <td align="center">{currency_symbol}</td>
+                <td align="center">{currency_code}</td>
+                <td align="center">{created }</td>
+                <td align="center"><
+                 CustomButton onClick={redirect} inverted> View </CustomButton>
+                </td>
+              </tr>
 
-            </div>
-            <CustomButton onClick={redirect} inverted> View Artist </CustomButton>
-        </div>
+
     )
 }
-
-
-
 
 
 const mapDispatchToProps = dispatch => ({

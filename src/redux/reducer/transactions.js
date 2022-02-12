@@ -1,6 +1,6 @@
 export const initialState = {
     loading: false,
-    artists: [],
+    transactions: [],
     errorMessage: null
 };
 
@@ -10,21 +10,21 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 loading: false,
-                artists: []
+                transactions: action.payload
             };
-        case "SEARCH_ARTISTS_REQUEST":
+        case "SEARCH_TRANSACTIONS_REQUEST":
             return {
                 ...state,
                 loading: true,
                 errorMessage: null
             };
-        case "SEARCH_ARTISTS_SUCCESS":
+        case "SEARCH_TRANSACTIONS_SUCCESS":
             return {
                 ...state,
                 loading: false,
-                artists: action.payload
+                transactions: action.payload
             };
-        case "SEARCH_ARTISTS_FAILURE":
+        case "SEARCH_TRANSACTIONS_FAILURE":
             return {
                 ...state,
                 loading: false,
