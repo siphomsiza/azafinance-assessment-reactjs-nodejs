@@ -1,4 +1,4 @@
-# wyzetalk-assessment-react-nodejs 
+# wyzetalk-assessment-react-nodejs
 
 Music Website
 
@@ -22,4 +22,4 @@ For Testing I have used jest enzyme for testing this assessment test
 
 ### `Heroku Url`
 
-Open [https://still-escarpment-88137.herokuapp.com/](https://still-escarpment-88137.herokuapp.com/) to view it in the browser.
+Open [https://azafinance-assessment-nodejs.herokuapp.com/](https://azafinance-assessment-nodejs.herokuapp.com/) to view it in the browser.
