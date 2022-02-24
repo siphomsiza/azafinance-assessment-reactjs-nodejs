@@ -6,9 +6,12 @@ import CustomButton from '../../components/custom-button/custom-button.component
 const SearchBar = (props) => {
     const [subjectValue, setSubjectValue] = useState();
     const [amountValue, setAmountValue] = useState();
+    const [amountValueOutput, setAmountValueOutput] = useState();
     const [currencyValue, setCurrencyValue] = useState();
+    const [currencyValueOutput, setCurrencyValueOutput] = useState();
     const [customerIdValue, setCustomerIdValue] = useState();
     const [currencySymbol, setCurrencySymbol] = useState();
+    const [currencySymbolOutput, setCurrencySymbolOutput] = useState();
     const currencies = require('currency-formatter/currencies');
 
     let history = useHistory();
@@ -34,10 +37,29 @@ const SearchBar = (props) => {
         document.getElementById('currency-invalid').style.display="none"
     }
 
+    const handlesetCurrencyOutputChanges = (e) => {
+        //console.log(amountValue)
+        setAmountValueOutput(amountValue);
+        setCurrencyValueOutput(e.target.value);
+        for (let i = 0; i < currencies.length; i++) {
+            if (currencies[i].code === e.target.value){
+              setCurrencySymbolOutput(currencies[i].symbol);
+            }
+          }
+
+        document.getElementsByName("output-currency")[0].className = "form-control"
+        document.getElementById('output-currency-invalid').style.display="none"
+    }
     const handleAmountInputChanges = (e) => {
         setAmountValue(e.target.value);
         document.getElementsByName("amount")[0].className = "form-control"
         document.getElementById('amount-invalid').style.display="none"
+    }
+
+    const handleAmountOutputChanges = (e) => {
+        setAmountValueOutput(e.target.value);
+        document.getElementsByName("output-amount")[0].className = "form-control"
+        document.getElementById('output-amount-invalid').style.display="none"
     }
 
     const handlesetCustomerIdInputChanges = (e) => {
@@ -47,7 +69,7 @@ const SearchBar = (props) => {
     }
     const callSearchFunction = (e) => {
         e.preventDefault();
-        if ( ((typeof subjectValue === 'undefined') || subjectValue === '') || ((typeof currencyValue === 'undefined') || currencyValue === '') || ((typeof amountValue === 'undefined') || amountValue === '') ||((typeof customerIdValue === 'undefined') || customerIdValue === '') ){
+        if ( ((typeof subjectValue === 'undefined') || subjectValue === '') || ((typeof currencyValue === 'undefined') || currencyValue === '') || ((typeof amountValue === 'undefined') || amountValue === '') || ((typeof amountValueOutput === 'undefined') || amountValueOutput === '') ||((typeof currencyValueOutput === 'undefined') || currencyValueOutput === '') ||((typeof customerIdValue === 'undefined') || customerIdValue === '') ){
             if ((typeof subjectValue === 'undefined') || subjectValue === '')
             {
               document.getElementsByName("subject")[0].className = "form-control was-validated"
@@ -57,10 +79,21 @@ const SearchBar = (props) => {
               document.getElementsByName("currency")[0].className = "form-control was-validated"
               document.getElementById('currency-invalid').style.display="block"
             }
+
+            if ((typeof currencyValueOutput === 'undefined') || currencyValueOutput === '') {
+              document.getElementsByName("output-currency")[0].className = "form-control was-validated"
+              document.getElementById('output-currency-invalid').style.display="block"
+            }
+
             if ((typeof amountValue === 'undefined') || amountValue === '') {
               document.getElementsByName("amount")[0].className = "form-control was-validated"
               document.getElementById('amount-invalid').style.display="block"
             }
+            if ((typeof amountValueOutput === 'undefined') || amountValueOutput === '') {
+              document.getElementsByName("output-amount")[0].className = "form-control was-validated"
+              document.getElementById('output-amount-invalid').style.display="block"
+            }
+
             if ((typeof customerIdValue === 'undefined') || customerIdValue === '') {
               document.getElementsByName("customer_id")[0].className = "form-control was-validated"
               document.getElementById('customer_id-invalid').style.display="block"
@@ -69,7 +102,7 @@ const SearchBar = (props) => {
         }
         else
         {
-          props.search({transaction: {subject: subjectValue,amount: amountValue ,customer_id: customerIdValue,currency_code: currencyValue ,currency_symbol: currencySymbol}});
+          props.search({transaction: {subject: subjectValue,input_amount: amountValue,output_amount: amountValueOutput  ,customer_id: customerIdValue,input_currency_code: currencyValue,output_currency_code: currencyValueOutput ,input_currency_symbol: currencySymbol,output_currency_symbol: currencySymbolOutput}});
         }
     }
 
@@ -86,7 +119,7 @@ const SearchBar = (props) => {
               />
               <div id="subject-invalid" class="invalid-feedback">Please provide a valid subject.</div>
               <br/>
-              <label class="form-label" for="exampleFormControlInput1">Currency</label>
+              <label class="form-label" for="exampleFormControlInput1">Input Currency</label>
               <select name="currency" className="form-control form-select form-select-lg mb-3" type="text"  onChange={handlesetCurrencyInputChanges} >
                <option value='' >Select currency</option>
               {
@@ -99,9 +132,9 @@ const SearchBar = (props) => {
               </select>
               <br/>
               <div id="currency-invalid" class="invalid-feedback">Please provide a valid currency.</div>
-              <label class="form-label" for="exampleFormControlInput1">Amount</label>
+              <label class="form-label" for="exampleFormControlInput1">Input Amount</label>
               <div class="input-group mb-3">
-              <input class="input-group-text currency-symbol" id="currency-symbol" value={currencySymbol} name="currency_symbol"/>
+              <input class="input-group-text currency-symbol" id="currency-symbol" value={currencySymbol} name="currency_symbol" disabled="true" />
               <input
                   className='form-control currency-amount'
                   name="amount"
@@ -111,6 +144,34 @@ const SearchBar = (props) => {
               />
               <div id="amount-invalid" class="invalid-feedback">Please provide a valid amount.</div>
               </div>
+              <br/>
+              <label class="form-label" for="exampleFormControlInput1">Output Currency</label>
+              <select name="output-currency" className="form-control form-select form-select-lg mb-3" type="text"  onChange={handlesetCurrencyOutputChanges} >
+               <option value='' >Select output currency</option>
+              {
+
+                currencies.filter((item, idx) => idx > 5)
+                    .map((item, index) => (
+                       <option value={item.code} >{item.code +" -- "+item.symbol}</option>
+                    ))
+              }
+              </select>
+              <div id="output-currency-invalid" class="invalid-feedback">Please provide a valid output currency.</div>
+              <br/>
+              <label class="form-label" for="exampleFormControlInput1">Output Amount</label>
+              <div class="input-group mb-3">
+              <input class="input-group-text currency-symbol" id="currency-symbol" value={currencySymbolOutput} name="currency_symbol_output" disabled="true" />
+              <input
+                  className='form-control currency-amount'
+                  name="output-amount"
+                  value={amountValueOutput}
+                  onChange={handleAmountOutputChanges}
+                  type="text"
+                  disabled="true"
+              />
+              <div id="output-amount-invalid" class="invalid-feedback">Please provide a valid output amount.</div>
+              </div>
+
               <br/>
               <label class="form-label" for="exampleFormControlInput1">Customer Id</label>
               <select name="customer_id" className="form-control form-select form-select-lg mb-3" onChange={handlesetCustomerIdInputChanges}>

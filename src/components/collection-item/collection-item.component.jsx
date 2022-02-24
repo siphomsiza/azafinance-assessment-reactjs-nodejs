@@ -6,9 +6,11 @@ import { useHistory } from 'react-router-dom';
 require('date-utils');
 
 const CollectionItem = (props) => {
-  const { id,subject,customer_id,amount, created_at,currency_code,currency_symbol} = props;
+  const { id,subject,customer_id,input_amount,output_amount, created_at,input_currency_code,output_currency_code,input_currency_symbol,output_currency_symbol} = props;
   const currencyFormatter = require('currency-formatter');
-  const amount_currency = currencyFormatter.format(amount, { code: currency_code })
+  const input_amount_currency = currencyFormatter.format(input_amount, { code: input_currency_code })
+  const output_amount_currency = currencyFormatter.format(output_amount, { code: output_currency_code })
+
   let date_ob = new Date(created_at);
   date_ob.setHours(date_ob.getHours() - 2);
   const created = new Date(date_ob).toLocaleString();
@@ -23,12 +25,15 @@ const CollectionItem = (props) => {
                 <td >{id}</td>
                 <td align="center">{customer_id}</td>
                 <td align="center">{subject}</td>
-                <td align="center">{amount_currency}</td>
-                <td align="center">{currency_symbol}</td>
-                <td align="center">{currency_code}</td>
+                <td align="center">{input_amount_currency}</td>
+                <td align="center">{input_currency_symbol}</td>
+                <td align="center">{input_currency_code}</td>
+                <td align="center">{output_amount_currency}</td>
+                <td align="center">{output_currency_symbol}</td>
+                <td align="center">{output_currency_code}</td>
                 <td align="center">{created }</td>
-                <td align="center"><
-                 CustomButton onClick={redirect} inverted> View </CustomButton>
+                <td align="center">
+                < CustomButton onClick={redirect} inverted className="inverted  custom-button transactions-button"> View </CustomButton>
                 </td>
               </tr>
 

@@ -41,10 +41,12 @@ const Transaction = (props) => {
     }, []);
 
     const { transaction, loading} = state;
-    const { id,subject,customer_id,amount, created_at,currency_code,currency_symbol} = transaction;
+    const { id,subject,customer_id,input_amount,output_amount, created_at,input_currency_code,output_currency_code,input_currency_symbol,output_currency_symbol} = transaction;
 
     const currencyFormatter = require('currency-formatter');
-    const amount_currency = currencyFormatter.format(amount, { code: currency_code })
+    const input_amount_currency = currencyFormatter.format(input_amount, { code: input_currency_code })
+    const output_amount_currency = currencyFormatter.format(output_amount, { code: output_currency_code })
+
     let date_ob = new Date(created_at);
     date_ob.setHours(date_ob.getHours() - 2);
     const created = new Date(date_ob).toLocaleString();
@@ -71,19 +73,32 @@ const Transaction = (props) => {
                 <td>{subject}</td>
               </tr>
               <tr>
-                <th scope="col">Amount</th>
-                <td>{amount_currency}</td>
+                <th scope="col">Input Amount</th>
+                <td>{input_amount_currency}</td>
               </tr>
               <tr>
-                <th scope="col">Currency Symbol</th>
-                <td>{currency_symbol}</td>
+                <th scope="col">Input Currency Symbol</th>
+                <td>{input_currency_symbol}</td>
               </tr>
               <tr>
-                <th scope="col">Currency Code</th>
-                <td>{currency_code}</td>
+                <th scope="col">Input Currency Code</th>
+                <td>{input_currency_code}</td>
               </tr>
               <tr>
-              <th scope="col">Created At</th>
+                <th scope="col">Output Amount</th>
+                <td>{output_amount_currency}</td>
+              </tr>
+              <tr>
+                <th scope="col">Output Currency Symbol</th>
+                <td>{output_currency_symbol}</td>
+              </tr>
+              <tr>
+                <th scope="col">Output Currency Code</th>
+                <td>{output_currency_code}</td>
+              </tr>
+
+              <tr>
+                <th scope="col">Created At</th>
                 <td>{created}</td>
               </tr>
             </table>
